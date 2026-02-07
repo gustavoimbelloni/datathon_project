@@ -1,0 +1,13 @@
+flask
+pandas
+numpy
+scikit-learn
+joblib
+openpyxl
+pytest
+pytest-cov
+streamlit
+requests
+plotly
+scipy
+statsmodels
