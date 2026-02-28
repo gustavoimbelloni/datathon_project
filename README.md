@@ -14,16 +14,17 @@ project/
 │   ├── preprocessing.py   # Limpeza e preparação de dados
 │   ├── feature_engineering.py  # Engenharia de atributos
 │   ├── train.py           # Treinamento do modelo
-│   ├── evaluate.py        # Avaliação de métricas
-│   └── utils.py           # Funções auxiliares
+│   └── evaluate.py        # Avaliação de métricas
 ├── tests/                 # Testes unitários
 │   ├── test_preprocessing.py
 │   └── test_model.py
-├── dashboard.py           # Interface Streamlit
+├── complete_pipeline_test.py  #Teste de integração completo
+├── dashboard_elite.py           # Interface Streamlit
 ├── Dockerfile             # Containerização
 ├── docker-compose.yml     # Orquestração de containers
 ├── requirements.txt       # Dependências Python
-└── README.md             # Este arquivo
+├── GUIA_DASHBOARD.md      # Guia para utilização do dashboard
+└── README.md              # Este arquivo
 ```
 
 ## Como Executar
