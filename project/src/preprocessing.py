@@ -43,7 +43,7 @@ def split_data(df, target_col='target', test_size=0.2, random_state=42):
 
 if __name__ == "__main__":
     # Teste rápido
-    data = load_data('C:/Users/gustavoborde/Downloads/BASEDEDADOSPEDE2024-DATATHON.xlsx')
+    data = load_data('data\BASE DE DADOS PEDE 2024 - DATATHON.xlsx')
     processed_data = preprocess_data(data)
     print(f"Dados processados: {processed_data.shape}")
     print(processed_data.head())

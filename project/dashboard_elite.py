@@ -91,7 +91,7 @@ if menu == "🏠 Dashboard":
     
     # Carregar dados para análise
     try:
-        df = pd.read_excel('C:/Users/gustavoborde/Downloads/BASEDEDADOSPEDE2024-DATATHON.xlsx')
+        df = pd.read_excel('data\BASE DE DADOS PEDE 2024 - DATATHON.xlsx')
         
         # Calcular KPIs
         total_alunos = len(df)
@@ -196,7 +196,7 @@ elif menu == "🔍 Explorador de Dados":
     st.subheader("Explorador Avançado de Dados")
     
     try:
-        df = pd.read_excel('C:/Users/gustavoborde/Downloads/BASEDEDADOSPEDE2024-DATATHON.xlsx')
+        df = pd.read_excel('data\BASE DE DADOS PEDE 2024 - DATATHON.xlsx')
         
         # Filtros
         col1, col2, col3 = st.columns(3)
@@ -242,7 +242,7 @@ elif menu == "📊 Análises Avançadas":
     st.subheader("Análises Avançadas e Correlações")
     
     try:
-        df = pd.read_excel('C:/Users/gustavoborde/Downloads/BASEDEDADOSPEDE2024-DATATHON.xlsx')
+        df = pd.read_excel('data\BASE DE DADOS PEDE 2024 - DATATHON.xlsx')
         
         col1, col2 = st.columns(2)
         
