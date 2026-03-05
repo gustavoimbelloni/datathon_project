@@ -10,6 +10,7 @@ services:
       - FLASK_ENV=production
     volumes:
       - ./app/model:/app/app/model
+      - ./logs:/app/logs
     command: python app/main.py
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5001/health"]

@@ -41,10 +41,13 @@ run_docker() {
   $DCOMPOSE up -d --build
   wait_for_api "http://localhost:5001/health" || true
   echo ""
-  echo "Executando complete_pipeline_test.py e gerando logs..."
-  $DCOMPOSE run --rm api python complete_pipeline_test.py 2>&1 | tee "$LOG_FILE"
+  echo "Executando complete_pipeline_test.py dentro do container da API..."
+  LOG_NAME="pipeline_test_$(date +%Y%m%d_%H%M%S).log"
+  $DCOMPOSE exec -T -e PIPELINE_LOG_NAME="$LOG_NAME" api sh -c 'mkdir -p /app/logs && python complete_pipeline_test.py 2>&1 | tee /app/logs/$PIPELINE_LOG_NAME'
   echo ""
-  echo "Logs salvos em: $LOG_FILE"
+  echo "Logs gerados dentro do container da API em: /app/logs/$LOG_NAME"
+  echo "Logs no host (volume montado): $LOG_DIR/$LOG_NAME"
+  echo "Para ver no container: $DCOMPOSE exec api cat /app/logs/$LOG_NAME"
   echo "Serviços continuam rodando. Para parar: $DCOMPOSE down"
 }
 
