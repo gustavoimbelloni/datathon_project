@@ -3,24 +3,34 @@ version: '3.8'
 services:
   api:
     build: .
+    image: datathon-project:latest
     ports:
-      - "5000:5000"
+      - "5001:5001"
     environment:
       - FLASK_ENV=production
     volumes:
       - ./app/model:/app/app/model
+      - ./logs:/app/logs
     command: python app/main.py
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
 
   dashboard:
+    image: datathon-project:latest
     build: .
     ports:
-      - "8501:8501"
+      - "8502:8502"
     environment:
-      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_PORT=8502
       - STREAMLIT_SERVER_HEADLESS=true
     depends_on:
-      - api
-    command: streamlit run dashboard.py --server.port 8501 --server.address 0.0.0.0
+      api:
+        condition: service_healthy
+    command: streamlit run dashboard_elite.py --server.port 8502 --server.address 0.0.0.0
 
 volumes:
   model_data:

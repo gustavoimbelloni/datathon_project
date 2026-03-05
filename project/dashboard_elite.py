@@ -72,7 +72,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Configuração da API
-API_URL = st.sidebar.text_input("URL da API", value="http://localhost:5000")
+API_URL = st.sidebar.text_input("URL da API", value="http://localhost:5001")
 
 st.markdown('<div class="header-title">✨ Central de Inteligência Educacional</div>', unsafe_allow_html=True)
 st.markdown("### Associação Passos Mágicos - Sistema de Análise de Risco de Defasagem")

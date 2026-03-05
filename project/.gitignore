@@ -50,10 +50,3 @@ Thumbs.db
 
 # Cursor
 .cursor/
-
-
-# ==========
-# Docs que você não quer versionar
-# ==========
-GUIA_APRESENTACAO.md
-Dicionário Dados Datathon.pdf
