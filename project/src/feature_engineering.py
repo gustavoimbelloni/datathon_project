@@ -27,7 +27,7 @@ if __name__ == "__main__":
     import os
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from preprocessing import load_data, preprocess_data
-    data = load_data(r'C:\Users\crisp\Downloads\BASE DE DADOS PEDE 2024 - DATATHON.xlsx')
+    data = load_data('data/BASE DE DADOS PEDE 2024 - DATATHON.xlsx')
     processed = preprocess_data(data)
     engineered = apply_feature_engineering(processed)
     print(f"Dados com engenharia de atributos: {engineered.shape}")
