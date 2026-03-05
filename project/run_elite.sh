@@ -3,7 +3,7 @@
 echo "🚀 Iniciando a Central de Inteligência Educacional..."
 echo ""
 echo "Opções:"
-echo "1) Rodar apenas a API (porta 5000)"
+echo "1) Rodar apenas a API (porta 5001)"
 echo "2) Rodar apenas o Dashboard Elite (porta 8501)"
 echo "3) Rodar ambos (recomendado)"
 echo "4) Rodar com Docker Compose"

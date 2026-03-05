@@ -21,7 +21,7 @@ docker-compose up
 ```
 
 Isso inicia automaticamente:
-- API em `http://localhost:5000`
+- API em `http://localhost:5001`
 - Dashboard em `http://localhost:8501`
 
 ---
@@ -112,7 +112,7 @@ streamlit run dashboard.py
 ```
 
 ### Erro "Connection refused"
-- Certifique-se de que a API está rodando em `http://localhost:5000`
+- Certifique-se de que a API está rodando em `http://localhost:5001`
 - No menu lateral, você pode alterar a URL da API se necessário
 
 ### Arquivo não carrega

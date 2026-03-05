@@ -28,4 +28,4 @@ def load_model():
 register_routes(app, load_model)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5001)
