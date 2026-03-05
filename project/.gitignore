@@ -51,11 +51,6 @@ Thumbs.db
 # Cursor
 .cursor/
 
-# ==========
-# Dados (não subir para o GitHub)
-# ==========
-BASEDEDADOSPEDE2024-DATATHON.xlsx
-*.xlsx
 
 # ==========
 # Docs que você não quer versionar
