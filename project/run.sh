@@ -1,6 +1,7 @@
 #!/bin/bash
 # run.sh - Sobe API, Streamlit e executa complete_pipeline_test.py gerando logs
 # Uso: ./run.sh [docker|local]  (default: docker)
+# Opcional: API_HEALTH_URL=http://seu-ec2:5001/health (quando rodar de outra máquina)
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -10,10 +11,12 @@ LOG_DIR="${LOG_DIR:-./logs}"
 LOG_FILE="${LOG_DIR}/pipeline_test_$(date +%Y%m%d_%H%M%S).log"
 mkdir -p "$LOG_DIR"
 
+# URL do healthcheck: localhost quando o script roda na mesma máquina dos containers
+API_HEALTH_URL="${API_HEALTH_URL:-http://localhost:5001/health}"
 MODE="${1:-docker}"
 
 wait_for_api() {
-  local url="${1:-http://localhost:5001/health}"
+  local url="${1:-$API_HEALTH_URL}"
   local max_attempts=30
   local attempt=1
   echo "Aguardando API em $url ..."
@@ -39,7 +42,7 @@ run_docker() {
   echo "Iniciando com Docker Compose"
   echo "=============================================="
   $DCOMPOSE up -d --build
-  wait_for_api "http://localhost:5001/health" || true
+  wait_for_api "$API_HEALTH_URL" || true
   echo ""
   echo "Executando complete_pipeline_test.py dentro do container da API..."
   LOG_NAME="pipeline_test_$(date +%Y%m%d_%H%M%S).log"
@@ -60,7 +63,7 @@ run_local() {
   python app/main.py &
   API_PID=$!
   sleep 2
-  wait_for_api "http://localhost:5001/health" || true
+  wait_for_api "$API_HEALTH_URL" || true
 
   # 2) Streamlit em background
   echo "2) Subindo Streamlit (porta 8502)..."
