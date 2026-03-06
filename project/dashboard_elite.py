@@ -1,6 +1,10 @@
+import os
 import streamlit as st
 import requests
 import pandas as pd
+
+# URL da API: no Docker use API_BASE_URL=http://api:5001; local use localhost
+DEFAULT_API_URL = os.environ.get("API_BASE_URL", "http://localhost:5001")
 import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
@@ -71,8 +75,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Configuração da API
-API_URL = st.sidebar.text_input("URL da API", value="http://localhost:5001")
+# Configuração da API (no EC2 com Docker: use http://api:5001 ou defina API_BASE_URL)
+API_URL = st.sidebar.text_input("URL da API", value=DEFAULT_API_URL)
 
 st.markdown('<div class="header-title">✨ Central de Inteligência Educacional</div>', unsafe_allow_html=True)
 st.markdown("### Associação Passos Mágicos - Sistema de Análise de Risco de Defasagem")

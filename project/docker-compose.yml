@@ -12,6 +12,7 @@ services:
       - ./app/model:/app/app/model
       - ./logs:/app/logs
     command: python app/main.py
+    # healthcheck roda dentro do container da API, então localhost:5001 é correto
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
       interval: 5s
@@ -27,6 +28,7 @@ services:
     environment:
       - STREAMLIT_SERVER_PORT=8502
       - STREAMLIT_SERVER_HEADLESS=true
+      - API_BASE_URL=http://api:5001
     depends_on:
       api:
         condition: service_healthy
